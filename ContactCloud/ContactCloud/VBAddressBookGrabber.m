@@ -5,7 +5,7 @@
 //  Created by Vitaly Berg on 07.07.13.
 //  Copyright (c) 2013 Vitaly Berg. All rights reserved.
 //
-/*
+
 #import "VBAddressBookGrabber.h"
 
 const ABPropertyID kABPersonIDProperty = 0xBE76;
@@ -154,4 +154,3 @@ const ABPropertyID kABPersonIDProperty = 0xBE76;
 
 
  @end
-*/

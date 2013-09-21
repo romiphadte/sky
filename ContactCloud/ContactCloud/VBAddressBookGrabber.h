@@ -5,7 +5,7 @@
 //  Created by Vitaly Berg on 07.07.13.
 //  Copyright (c) 2013 Vitaly Berg. All rights reserved.
 //
-/*
+
 #import <Foundation/Foundation.h>
 #import <AddressBook/AddressBook.h>
 
@@ -32,4 +32,3 @@ extern const ABPropertyID kABPersonIDProperty;
 + (NSDictionary *)localizedPropertyNames; 
 
 @end
-*/
