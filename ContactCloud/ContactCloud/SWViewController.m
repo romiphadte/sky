@@ -7,6 +7,7 @@
 //
 
 #import "SWViewController.h"
+#import <Parse/Parse.h>
 
 @interface SWViewController ()
 
@@ -17,6 +18,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    [testObject setObject:@"romi" forKey:@"foo"];
+    [testObject save];
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

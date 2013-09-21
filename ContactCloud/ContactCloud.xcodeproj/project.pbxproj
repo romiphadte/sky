@@ -19,6 +19,17 @@
 		E4015C6917ED654400DB248F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4015C6717ED654400DB248F /* MainStoryboard_iPhone.storyboard */; };
 		E4015C6C17ED654400DB248F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4015C6A17ED654400DB248F /* MainStoryboard_iPad.storyboard */; };
 		E4015C6F17ED654400DB248F /* SWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4015C6E17ED654400DB248F /* SWViewController.m */; };
+		E4797E9317ED7ED10001FA5E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4797E9217ED7ED10001FA5E /* Parse.framework */; };
+		E4797E9617ED7F0F0001FA5E /* VBAddressBookGrabber.m in Sources */ = {isa = PBXBuildFile; fileRef = E4797E9517ED7F0F0001FA5E /* VBAddressBookGrabber.m */; };
+		E4797E9817ED7F4B0001FA5E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4797E9717ED7F4B0001FA5E /* AudioToolbox.framework */; };
+		E4797E9A17ED7F530001FA5E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4797E9917ED7F530001FA5E /* CFNetwork.framework */; };
+		E4797E9C17ED7F670001FA5E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4797E9B17ED7F670001FA5E /* CoreLocation.framework */; };
+		E4797E9E17ED7F730001FA5E /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4797E9D17ED7F730001FA5E /* libz.1.1.3.dylib */; };
+		E4797EA017ED7F7C0001FA5E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4797E9F17ED7F7C0001FA5E /* MobileCoreServices.framework */; };
+		E4797EA217ED7F890001FA5E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4797EA117ED7F890001FA5E /* QuartzCore.framework */; };
+		E4797EA417ED7F920001FA5E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4797EA317ED7F920001FA5E /* Security.framework */; };
+		E4797EA617ED7F9A0001FA5E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4797EA517ED7F9A0001FA5E /* StoreKit.framework */; };
+		E4797EA817ED7FA40001FA5E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4797EA717ED7FA40001FA5E /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +50,18 @@
 		E4015C6B17ED654400DB248F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		E4015C6D17ED654400DB248F /* SWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWViewController.h; sourceTree = "<group>"; };
 		E4015C6E17ED654400DB248F /* SWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWViewController.m; sourceTree = "<group>"; };
+		E4797E9217ED7ED10001FA5E /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		E4797E9417ED7F060001FA5E /* VBAddressBookGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBAddressBookGrabber.h; sourceTree = "<group>"; };
+		E4797E9517ED7F0F0001FA5E /* VBAddressBookGrabber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBAddressBookGrabber.m; sourceTree = "<group>"; };
+		E4797E9717ED7F4B0001FA5E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E4797E9917ED7F530001FA5E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E4797E9B17ED7F670001FA5E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E4797E9D17ED7F730001FA5E /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		E4797E9F17ED7F7C0001FA5E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		E4797EA117ED7F890001FA5E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E4797EA317ED7F920001FA5E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		E4797EA517ED7F9A0001FA5E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E4797EA717ED7FA40001FA5E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,9 +69,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4797EA817ED7FA40001FA5E /* SystemConfiguration.framework in Frameworks */,
+				E4797EA617ED7F9A0001FA5E /* StoreKit.framework in Frameworks */,
+				E4797EA417ED7F920001FA5E /* Security.framework in Frameworks */,
+				E4797EA217ED7F890001FA5E /* QuartzCore.framework in Frameworks */,
+				E4797EA017ED7F7C0001FA5E /* MobileCoreServices.framework in Frameworks */,
+				E4797E9E17ED7F730001FA5E /* libz.1.1.3.dylib in Frameworks */,
+				E4797E9C17ED7F670001FA5E /* CoreLocation.framework in Frameworks */,
+				E4015C5417ED654400DB248F /* CoreGraphics.framework in Frameworks */,
+				E4797E9A17ED7F530001FA5E /* CFNetwork.framework in Frameworks */,
+				E4797E9817ED7F4B0001FA5E /* AudioToolbox.framework in Frameworks */,
 				E4015C5017ED654400DB248F /* UIKit.framework in Frameworks */,
 				E4015C5217ED654400DB248F /* Foundation.framework in Frameworks */,
-				E4015C5417ED654400DB248F /* CoreGraphics.framework in Frameworks */,
+				E4797E9317ED7ED10001FA5E /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +108,16 @@
 		E4015C4E17ED654400DB248F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E4797EA717ED7FA40001FA5E /* SystemConfiguration.framework */,
+				E4797EA517ED7F9A0001FA5E /* StoreKit.framework */,
+				E4797EA317ED7F920001FA5E /* Security.framework */,
+				E4797EA117ED7F890001FA5E /* QuartzCore.framework */,
+				E4797E9F17ED7F7C0001FA5E /* MobileCoreServices.framework */,
+				E4797E9D17ED7F730001FA5E /* libz.1.1.3.dylib */,
+				E4797E9B17ED7F670001FA5E /* CoreLocation.framework */,
+				E4797E9917ED7F530001FA5E /* CFNetwork.framework */,
+				E4797E9717ED7F4B0001FA5E /* AudioToolbox.framework */,
+				E4797E9217ED7ED10001FA5E /* Parse.framework */,
 				E4015C4F17ED654400DB248F /* UIKit.framework */,
 				E4015C5117ED654400DB248F /* Foundation.framework */,
 				E4015C5317ED654400DB248F /* CoreGraphics.framework */,
@@ -90,6 +133,8 @@
 				E4015C6717ED654400DB248F /* MainStoryboard_iPhone.storyboard */,
 				E4015C6A17ED654400DB248F /* MainStoryboard_iPad.storyboard */,
 				E4015C6D17ED654400DB248F /* SWViewController.h */,
+				E4797E9517ED7F0F0001FA5E /* VBAddressBookGrabber.m */,
+				E4797E9417ED7F060001FA5E /* VBAddressBookGrabber.h */,
 				E4015C6E17ED654400DB248F /* SWViewController.m */,
 				E4015C5617ED654400DB248F /* Supporting Files */,
 			);
@@ -181,6 +226,7 @@
 				E4015C5C17ED654400DB248F /* main.m in Sources */,
 				E4015C6017ED654400DB248F /* SWAppDelegate.m in Sources */,
 				E4015C6F17ED654400DB248F /* SWViewController.m in Sources */,
+				E4797E9617ED7F0F0001FA5E /* VBAddressBookGrabber.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +321,10 @@
 		E4015C7317ED654400DB248F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/romi/Dropbox/Hacking/contactCloud/ContactCloud,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ContactCloud/ContactCloud-Prefix.pch";
 				INFOPLIST_FILE = "ContactCloud/ContactCloud-Info.plist";
@@ -286,6 +336,10 @@
 		E4015C7417ED654400DB248F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/romi/Dropbox/Hacking/contactCloud/ContactCloud,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ContactCloud/ContactCloud-Prefix.pch";
 				INFOPLIST_FILE = "ContactCloud/ContactCloud-Info.plist";
@@ -313,6 +367,7 @@
 				E4015C7417ED654400DB248F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
