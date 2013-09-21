@@ -23,12 +23,16 @@ extern const ABPropertyID kABPersonIDProperty;
 // If not nil date will be formatter to string
 @property (strong, nonatomic) NSDateFormatter *dateFormatter; 
 
+-(VBAddressBookGrabber*)init;
+
 - (NSArray *)grabAddressBook:(ABAddressBookRef)addressBook;
 
 // Custom kABPersonIDProperty included
 + (NSArray *)allProperties;
 
 // Custom kABPersonIDProperty included as 'PersonID'
-+ (NSDictionary *)localizedPropertyNames; 
++ (NSDictionary *)localizedPropertyNames;
+
+-(NSArray*)getAddressBook;
 
 @end

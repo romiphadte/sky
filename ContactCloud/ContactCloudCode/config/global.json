@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "contactCloud"
+        }, 
+        "contactCloud": {
+            "applicationId": "Xiosij1pA3HPiCSOmIBwcvVF9PQfMjR77JFu6G9P", 
+            "masterKey": "Zk960jBKj9UInzFAEi7ePdfFa7nK7XZ1uYTQB6iF"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.12"
+    }
+}
