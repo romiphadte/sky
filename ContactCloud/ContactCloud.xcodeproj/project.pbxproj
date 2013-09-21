@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6858A5A917ED8F9D007F74D4 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6858A5A817ED8F9D007F74D4 /* Parse.framework */; };
+		6858A5AB17ED8FB1007F74D4 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6858A5AA17ED8FB1007F74D4 /* AddressBook.framework */; };
 		E4015C5017ED654400DB248F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4015C4F17ED654400DB248F /* UIKit.framework */; };
 		E4015C5217ED654400DB248F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4015C5117ED654400DB248F /* Foundation.framework */; };
 		E4015C5417ED654400DB248F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4015C5317ED654400DB248F /* CoreGraphics.framework */; };
@@ -19,7 +21,6 @@
 		E4015C6917ED654400DB248F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4015C6717ED654400DB248F /* MainStoryboard_iPhone.storyboard */; };
 		E4015C6C17ED654400DB248F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4015C6A17ED654400DB248F /* MainStoryboard_iPad.storyboard */; };
 		E4015C6F17ED654400DB248F /* SWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4015C6E17ED654400DB248F /* SWViewController.m */; };
-		E4797E9317ED7ED10001FA5E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4797E9217ED7ED10001FA5E /* Parse.framework */; };
 		E4797E9617ED7F0F0001FA5E /* VBAddressBookGrabber.m in Sources */ = {isa = PBXBuildFile; fileRef = E4797E9517ED7F0F0001FA5E /* VBAddressBookGrabber.m */; };
 		E4797E9817ED7F4B0001FA5E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4797E9717ED7F4B0001FA5E /* AudioToolbox.framework */; };
 		E4797E9A17ED7F530001FA5E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4797E9917ED7F530001FA5E /* CFNetwork.framework */; };
@@ -33,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6858A5A817ED8F9D007F74D4 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		6858A5AA17ED8FB1007F74D4 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		E4015C4C17ED654400DB248F /* ContactCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4015C4F17ED654400DB248F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E4015C5117ED654400DB248F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -50,7 +53,6 @@
 		E4015C6B17ED654400DB248F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		E4015C6D17ED654400DB248F /* SWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWViewController.h; sourceTree = "<group>"; };
 		E4015C6E17ED654400DB248F /* SWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWViewController.m; sourceTree = "<group>"; };
-		E4797E9217ED7ED10001FA5E /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E4797E9417ED7F060001FA5E /* VBAddressBookGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBAddressBookGrabber.h; sourceTree = "<group>"; };
 		E4797E9517ED7F0F0001FA5E /* VBAddressBookGrabber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBAddressBookGrabber.m; sourceTree = "<group>"; };
 		E4797E9717ED7F4B0001FA5E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -69,19 +71,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6858A5AB17ED8FB1007F74D4 /* AddressBook.framework in Frameworks */,
 				E4797EA817ED7FA40001FA5E /* SystemConfiguration.framework in Frameworks */,
 				E4797EA617ED7F9A0001FA5E /* StoreKit.framework in Frameworks */,
 				E4797EA417ED7F920001FA5E /* Security.framework in Frameworks */,
 				E4797EA217ED7F890001FA5E /* QuartzCore.framework in Frameworks */,
 				E4797EA017ED7F7C0001FA5E /* MobileCoreServices.framework in Frameworks */,
 				E4797E9E17ED7F730001FA5E /* libz.1.1.3.dylib in Frameworks */,
+				6858A5A917ED8F9D007F74D4 /* Parse.framework in Frameworks */,
 				E4797E9C17ED7F670001FA5E /* CoreLocation.framework in Frameworks */,
 				E4015C5417ED654400DB248F /* CoreGraphics.framework in Frameworks */,
 				E4797E9A17ED7F530001FA5E /* CFNetwork.framework in Frameworks */,
 				E4797E9817ED7F4B0001FA5E /* AudioToolbox.framework in Frameworks */,
 				E4015C5017ED654400DB248F /* UIKit.framework in Frameworks */,
 				E4015C5217ED654400DB248F /* Foundation.framework in Frameworks */,
-				E4797E9317ED7ED10001FA5E /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +111,8 @@
 		E4015C4E17ED654400DB248F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6858A5AA17ED8FB1007F74D4 /* AddressBook.framework */,
+				6858A5A817ED8F9D007F74D4 /* Parse.framework */,
 				E4797EA717ED7FA40001FA5E /* SystemConfiguration.framework */,
 				E4797EA517ED7F9A0001FA5E /* StoreKit.framework */,
 				E4797EA317ED7F920001FA5E /* Security.framework */,
@@ -117,7 +122,6 @@
 				E4797E9B17ED7F670001FA5E /* CoreLocation.framework */,
 				E4797E9917ED7F530001FA5E /* CFNetwork.framework */,
 				E4797E9717ED7F4B0001FA5E /* AudioToolbox.framework */,
-				E4797E9217ED7ED10001FA5E /* Parse.framework */,
 				E4015C4F17ED654400DB248F /* UIKit.framework */,
 				E4015C5117ED654400DB248F /* Foundation.framework */,
 				E4015C5317ED654400DB248F /* CoreGraphics.framework */,
@@ -324,6 +328,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/romi/Dropbox/Hacking/contactCloud/ContactCloud,
+					/Users/sudarshanbhat/Desktop/contactCloud/ContactCloud,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ContactCloud/ContactCloud-Prefix.pch";
@@ -339,6 +344,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/romi/Dropbox/Hacking/contactCloud/ContactCloud,
+					/Users/sudarshanbhat/Desktop/contactCloud/ContactCloud,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ContactCloud/ContactCloud-Prefix.pch";
