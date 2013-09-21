@@ -78,6 +78,7 @@
     else
     {
         cell.detailTextLabel.text = [currentInfo objectForKey:@"Phone"];
+        NSLog(@"Phone %@",cell.detailTextLabel.text);
         cell.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
     }
     
@@ -119,11 +120,12 @@
     [fullNameQuery whereKey:@"fullname" containsString:searchText];
     // * server waiting spinner on + appear
     [fullNameQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Objects %@", [objects description]);
         // * server waiting spinner off + disappear
         // * parse objects to fit data structure of _allResults
         // * key:isFromServer value: YES
         _serverSearchResults = [objects mutableCopy];
-        NSLog(@"%@", [_serverSearchResults description]);
+        NSLog(@"Objects %@", [_serverSearchResults description]);
     }];
     
     NSArray *contacts = [[NSUserDefaults standardUserDefaults] objectForKey:@"Local Contacts"];
