@@ -12,6 +12,64 @@ const ABPropertyID kABPersonIDProperty = 0xBE76;
 
 @implementation VBAddressBookGrabber
 
+-(VBAddressBookGrabber *)init{
+    self = [super init];
+    
+    if(self) {
+        self.grabbingProperties = [VBAddressBookGrabber allProperties];
+        self.propertyNames = [VBAddressBookGrabber localizedPropertyNames];
+        self.dateFormatter = [[NSDateFormatter alloc] init];
+        self.dateFormatter.dateStyle = NSDateFormatterFullStyle;
+    }
+    
+    return self;
+}
+
+-(NSArray*)getAddressBook{
+    
+    __block NSArray *addressBook = [NSArray new];
+    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
+        ABAddressBookRequestAccessWithCompletion(NULL, ^(bool granted, CFErrorRef error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (!granted) {
+                    //[self checkAuthorizationStatus];
+                    //return;
+                    NSLog(@"not granted");
+                }
+                
+                addressBook = [self grabAddressBook];
+            });
+        });
+    } else {
+        addressBook = [self grabAddressBook];
+    }
+    
+    return addressBook;
+}
+
+- (NSArray*)grabAddressBook {
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+    if (!addressBook) {
+        return nil;
+    }
+    
+    VBAddressBookGrabber *addressBookGrabber = [[VBAddressBookGrabber alloc] init];
+    addressBookGrabber.grabbingProperties = [VBAddressBookGrabber allProperties];
+    addressBookGrabber.propertyNames = [VBAddressBookGrabber localizedPropertyNames];
+    addressBookGrabber.dateFormatter = [[NSDateFormatter alloc] init];
+    addressBookGrabber.dateFormatter.dateStyle = NSDateFormatterFullStyle;
+    
+    NSArray *people = [addressBookGrabber grabAddressBook:addressBook];
+    //NSData *jsonData = [NSJSONSerialization dataWithJSONObject:people options:NSJSONWritingPrettyPrinted error:nil];
+    //NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    //self.textView.text = jsonString;
+    //NSError *error;
+    //NSArray * parsedData = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+    CFRelease(addressBook);
+    
+    return people;
+}
+
 - (NSArray *)grabAddressBook:(ABAddressBookRef)addressBook {
     NSArray *people = (__bridge_transfer id)ABAddressBookCopyArrayOfAllPeople(addressBook);
     NSMutableArray *grabbedPeople = [NSMutableArray array];
@@ -57,7 +115,7 @@ const ABPropertyID kABPersonIDProperty = 0xBE76;
     return grabbedProperties;
 }
 
-- (id)grabProperty:(ABPropertyID)property fromPerson:(ABRecordRef)person {    
+- (id)grabProperty:(ABPropertyID)property fromPerson:(ABRecordRef)person {
     if (ABPersonGetTypeOfProperty(property) & kABMultiValueMask) {
         return [self grabMultiValueProperty:property fromPerson:person];
     } else {
@@ -106,33 +164,33 @@ const ABPropertyID kABPersonIDProperty = 0xBE76;
 
 + (NSArray *)allProperties {
     return @[
-        @(kABPersonIDProperty),
-        @(kABPersonFirstNameProperty),
-        @(kABPersonLastNameProperty),
-        @(kABPersonMiddleNameProperty),
-        @(kABPersonPrefixProperty),
-        @(kABPersonSuffixProperty),
-        @(kABPersonNicknameProperty),
-        @(kABPersonFirstNamePhoneticProperty),
-        @(kABPersonLastNamePhoneticProperty),
-        @(kABPersonMiddleNamePhoneticProperty),
-        @(kABPersonOrganizationProperty),
-        @(kABPersonJobTitleProperty),
-        @(kABPersonDepartmentProperty),
-        @(kABPersonEmailProperty),
-        @(kABPersonBirthdayProperty),
-        @(kABPersonNoteProperty),
-        @(kABPersonCreationDateProperty),
-        @(kABPersonModificationDateProperty),
-        @(kABPersonAddressProperty),
-        @(kABPersonDateProperty),
-        @(kABPersonKindProperty),
-        @(kABPersonPhoneProperty),
-        @(kABPersonInstantMessageProperty),
-        @(kABPersonURLProperty),
-        @(kABPersonRelatedNamesProperty),
-        @(kABPersonSocialProfileProperty),
-    ];
+             @(kABPersonIDProperty),
+             @(kABPersonFirstNameProperty),
+             @(kABPersonLastNameProperty),
+             @(kABPersonMiddleNameProperty),
+             @(kABPersonPrefixProperty),
+             @(kABPersonSuffixProperty),
+             @(kABPersonNicknameProperty),
+             @(kABPersonFirstNamePhoneticProperty),
+             @(kABPersonLastNamePhoneticProperty),
+             @(kABPersonMiddleNamePhoneticProperty),
+             @(kABPersonOrganizationProperty),
+             @(kABPersonJobTitleProperty),
+             @(kABPersonDepartmentProperty),
+             @(kABPersonEmailProperty),
+             @(kABPersonBirthdayProperty),
+             @(kABPersonNoteProperty),
+             @(kABPersonCreationDateProperty),
+             @(kABPersonModificationDateProperty),
+             @(kABPersonAddressProperty),
+             @(kABPersonDateProperty),
+             @(kABPersonKindProperty),
+             @(kABPersonPhoneProperty),
+             @(kABPersonInstantMessageProperty),
+             @(kABPersonURLProperty),
+             @(kABPersonRelatedNamesProperty),
+             @(kABPersonSocialProfileProperty),
+             ];
 }
 
 + (NSDictionary *)localizedPropertyNames {
@@ -148,9 +206,9 @@ const ABPropertyID kABPersonIDProperty = 0xBE76;
     }
     
     return names;
- 
- 
+    
+    
 }
 
 
- @end
+@end

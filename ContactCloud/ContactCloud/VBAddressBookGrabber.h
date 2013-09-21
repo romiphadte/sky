@@ -10,7 +10,7 @@
 #import <AddressBook/AddressBook.h>
 
 // Custom property for person record identifier
-extern const ABPropertyID kABPersonIDProperty; 
+extern const ABPropertyID kABPersonIDProperty;
 
 @interface VBAddressBookGrabber : NSObject
 
@@ -21,7 +21,9 @@ extern const ABPropertyID kABPersonIDProperty;
 @property (strong, nonatomic) NSDictionary *propertyNames;
 
 // If not nil date will be formatter to string
-@property (strong, nonatomic) NSDateFormatter *dateFormatter; 
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
+
+-(VBAddressBookGrabber*)init;
 
 - (NSArray *)grabAddressBook:(ABAddressBookRef)addressBook;
 
@@ -29,6 +31,8 @@ extern const ABPropertyID kABPersonIDProperty;
 + (NSArray *)allProperties;
 
 // Custom kABPersonIDProperty included as 'PersonID'
-+ (NSDictionary *)localizedPropertyNames; 
++ (NSDictionary *)localizedPropertyNames;
+
+-(NSArray*)getAddressBook;
 
 @end
