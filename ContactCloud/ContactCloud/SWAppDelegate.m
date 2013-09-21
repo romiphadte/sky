@@ -8,6 +8,8 @@
 
 #import "SWAppDelegate.h"
 #import <Parse/Parse.h>
+#import <AddressBook/AddressBook.h>
+#import "VBAddressBookGrabber.h"
 
 @implementation SWAppDelegate
 
@@ -16,7 +18,62 @@
     [Parse setApplicationId:@"Xiosij1pA3HPiCSOmIBwcvVF9PQfMjR77JFu6G9P"
                   clientKey:@"2LkzEQDilncJr78zi7PRBKCcgBQZnqQ1P8zzytad"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    [self authorizateAndGrab];
     return YES;
+}
+
+- (void)authorizateAndGrab
+{
+    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
+        ABAddressBookRequestAccessWithCompletion(NULL, ^(bool granted, CFErrorRef error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (!granted) {
+                    //[self checkAuthorizationStatus];
+                    //return;
+                    NSLog(@"not granted");
+                }
+                
+                [self grabAddressBook];
+            });
+        });
+    } else {
+        [self grabAddressBook];
+    }
+}
+
+- (void)grabAddressBook
+{
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+    if (!addressBook) {
+        return;
+    }
+    
+    VBAddressBookGrabber *addressBookGrabber = [[VBAddressBookGrabber alloc] init];
+    addressBookGrabber.grabbingProperties = [VBAddressBookGrabber allProperties];
+    addressBookGrabber.propertyNames = [VBAddressBookGrabber localizedPropertyNames];
+    addressBookGrabber.dateFormatter = [[NSDateFormatter alloc] init];
+    addressBookGrabber.dateFormatter.dateStyle = NSDateFormatterFullStyle;
+    
+    NSArray *people = [addressBookGrabber grabAddressBook:addressBook];
+    NSArray *realData = [NSArray array];
+    
+    for (int a = 0; a < [people count]; a++)
+    {
+        people = [people mutableCopy];
+        NSDictionary *currentInfo = [people objectAtIndex:a];
+        NSMutableDictionary *newInfo = [NSMutableDictionary dictionary];
+        [newInfo setObject:@"NO" forKey:@"isFromServer"];
+        [newInfo setObject:[[currentInfo objectForKey:@"Phone"] objectAtIndex:0] forKey:@"Phone"];
+        [newInfo setObject:[currentInfo objectForKey:@"First"] forKey:@"First"];
+        [newInfo setObject:[currentInfo objectForKey:@"Last"] forKey:@"Last"];
+        NSString *fullName = [NSString stringWithFormat:@"%@ %@", [currentInfo objectForKey:@"First"], [currentInfo objectForKey:@"Last"]];
+        [newInfo setObject:fullName forKey:@"FullName"];
+        realData = [realData arrayByAddingObject:[NSDictionary dictionaryWithDictionary:newInfo]];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:realData forKey:@"Local Contacts"];
+//    NSLog(@"parsed data = %@", realData);
+    CFRelease(addressBook);
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
