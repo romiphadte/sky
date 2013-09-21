@@ -9,6 +9,9 @@
 #import "SWViewController.h"
 #import <Parse/Parse.h>
 #import "VBAddressBookGrabber.h"
+
+#import "SWDataUploader.h"
+
 @interface SWViewController ()
 
 @end
@@ -18,6 +21,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    SWDataUploader *uploader = [[SWDataUploader alloc] init];
+    [uploader uploadAddressBookWithCompletion:^(NSError *error) {
+        if(error){
+            NSLog(@"error: %@", error);
+        }
+    }];
     PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
     [testObject setObject:@"romi" forKey:@"foo"];
     [testObject save];

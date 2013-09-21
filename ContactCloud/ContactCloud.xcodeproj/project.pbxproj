@@ -10,6 +10,7 @@
 		0789D21517ED9A760073F964 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0789D21417ED9A760073F964 /* Parse.framework */; };
 		0789D21817ED9F5C0073F964 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0789D21717ED9F5C0073F964 /* ContactsViewController.m */; };
 		6858A5AB17ED8FB1007F74D4 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6858A5AA17ED8FB1007F74D4 /* AddressBook.framework */; };
+		6858A5AE17EDD97E007F74D4 /* SWDataUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6858A5AD17EDD97E007F74D4 /* SWDataUploader.m */; };
 		E4015C5017ED654400DB248F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4015C4F17ED654400DB248F /* UIKit.framework */; };
 		E4015C5217ED654400DB248F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4015C5117ED654400DB248F /* Foundation.framework */; };
 		E4015C5417ED654400DB248F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4015C5317ED654400DB248F /* CoreGraphics.framework */; };
@@ -39,6 +40,8 @@
 		0789D21617ED9F5C0073F964 /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
 		0789D21717ED9F5C0073F964 /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
 		6858A5AA17ED8FB1007F74D4 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		6858A5AC17EDD97E007F74D4 /* SWDataUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWDataUploader.h; sourceTree = "<group>"; };
+		6858A5AD17EDD97E007F74D4 /* SWDataUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWDataUploader.m; sourceTree = "<group>"; };
 		E4015C4C17ED654400DB248F /* ContactCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4015C4F17ED654400DB248F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E4015C5117ED654400DB248F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -144,6 +147,8 @@
 				0789D21717ED9F5C0073F964 /* ContactsViewController.m */,
 				E4797E9517ED7F0F0001FA5E /* VBAddressBookGrabber.m */,
 				E4797E9417ED7F060001FA5E /* VBAddressBookGrabber.h */,
+				6858A5AC17EDD97E007F74D4 /* SWDataUploader.h */,
+				6858A5AD17EDD97E007F74D4 /* SWDataUploader.m */,
 				E4015C6A17ED654400DB248F /* MainStoryboard_iPad.storyboard */,
 				E4015C5617ED654400DB248F /* Supporting Files */,
 			);
@@ -235,6 +240,7 @@
 				E4015C5C17ED654400DB248F /* main.m in Sources */,
 				E4015C6017ED654400DB248F /* SWAppDelegate.m in Sources */,
 				0789D21817ED9F5C0073F964 /* ContactsViewController.m in Sources */,
+				6858A5AE17EDD97E007F74D4 /* SWDataUploader.m in Sources */,
 				E4015C6F17ED654400DB248F /* SWViewController.m in Sources */,
 				E4797E9617ED7F0F0001FA5E /* VBAddressBookGrabber.m in Sources */,
 			);
