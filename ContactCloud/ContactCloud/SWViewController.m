@@ -56,8 +56,9 @@
     
     NSArray *people = [addressBookGrabber grabAddressBook:addressBook];
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:people options:NSJSONWritingPrettyPrinted error:nil];
-    //NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     //self.textView.text = jsonString;
+    NSLog(@"Json %@",jsonString);
     NSError *error;
     NSArray * parsedData = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
     NSLog(@"parsed data = %@",parsedData);
