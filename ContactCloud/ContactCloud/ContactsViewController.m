@@ -7,6 +7,7 @@
 //
 
 #import "ContactsViewController.h"
+#import "SWCardViewController.h"
 
 @interface ContactsViewController ()
 
@@ -70,32 +71,41 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     NSDictionary *currentInfo = [_allResults objectAtIndex: indexPath.row];
+    
     if ([[currentInfo objectForKey: @"isFromServer"] isEqualToString:@"YES"])
-        cell.backgroundColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1];
+    {
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"ServerResultCell"];
+        cell.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
+    }
     else
     {
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell"];
         cell.detailTextLabel.text = [currentInfo objectForKey:@"Phone"];
-        NSLog(@"Phone %@",cell.detailTextLabel.text);
         cell.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
     }
     
     cell.textLabel.text = [currentInfo objectForKey:@"FullName"];
-    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < [_allResults count] - [_serverSearchResults count])
-    {}
+    NSDictionary *currentInfo = [_allResults objectAtIndex: indexPath.row];
+    if ([[currentInfo objectForKey: @"isFromServer"] isEqualToString:@"YES"])
+    {
+        //confirm the user wants to send a phone number request
+        NSString *message = [NSString stringWithFormat:@"Are you sure you would like to request %@'s phone number?", [currentInfo objectForKey:@"FullName"]];
+        UIAlertView *sendRequest = [[UIAlertView alloc] initWithTitle:@"Are you sure?" message:message delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        [sendRequest show];
+    }
+    else
+    {
         //* do some segue
         //* is a saved contact, load that data
-    else
-    {}
-        //* is not a saved contact, send request
+    }
 }
 
 #pragma mark - Search
@@ -116,16 +126,49 @@
     // Remove all objects from the filtered search array
     [_allResults removeAllObjects];
     
-    PFQuery *fullNameQuery = [PFQuery queryWithClassName:@"CLASS NAME FOR FULL NAME"];
-    [fullNameQuery whereKey:@"fullname" containsString:searchText];
+    NSLog(@"gets here");
+    
+    UIWindow *statusWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [statusWindow setBackgroundColor:[UIColor blackColor]];
+    [self.view addSubview:statusWindow];
+    UIActivityIndicatorView *newIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [newIndicator startAnimating];
+    
+    PFQuery *fullNameQuery = [PFQuery queryWithClassName:@"People"];
+    [fullNameQuery whereKey:@"fullname" containsString:[searchText lowercaseString]];
+    
+    [fullNameQuery setLimit:50];
     // * server waiting spinner on + appear
+    
     [fullNameQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"Objects %@", [objects description]);
-        // * server waiting spinner off + disappear
-        // * parse objects to fit data structure of _allResults
-        // * key:isFromServer value: YES
-        _serverSearchResults = [objects mutableCopy];
-        NSLog(@"Objects %@", [_serverSearchResults description]);
+        NSMutableArray *processedResults = [NSMutableArray array];
+        for (int a = 0; a < [objects count]; a++)
+        {
+            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+            NSDictionary *current = [objects objectAtIndex:a];
+            [dict setObject:[current objectForKey:@"firstname"] forKey:@"First"];
+            [dict setObject:[current objectForKey:@"lastname"] forKey:@"Last"];
+            NSString *fullName = [NSString stringWithFormat:@"%@ %@", [[current objectForKey:@"firstname"] capitalizedString], [[current objectForKey:@"lastname"] capitalizedString]];
+            [dict setObject:fullName forKey:@"FullName"];
+            [dict setObject:[current objectForKey:@"number"] forKey:@"Phone"];
+            [dict setObject:@"YES" forKey:@"isFromServer"];
+            
+            [processedResults addObject:dict];
+        }
+        [newIndicator stopAnimating];
+        [statusWindow removeFromSuperview];
+        
+        _serverSearchResults = processedResults;
+        
+        NSMutableSet *intermediate = [NSMutableSet setWithArray:_allResults];
+        [intermediate addObjectsFromArray:processedResults];
+        _allResults = [[intermediate allObjects] mutableCopy];
+        
+        NSSortDescriptor *server = [[NSSortDescriptor alloc] initWithKey:@"isFromServer" ascending:YES];
+        NSSortDescriptor *fullName = [[NSSortDescriptor alloc] initWithKey:@"FullName" ascending:YES];
+        _allResults = [[_allResults sortedArrayUsingDescriptors:[NSArray arrayWithObjects:server, fullName, nil]] mutableCopy];
+        
+        [self.searchDisplayController.searchResultsTableView reloadData];
     }];
     
     NSArray *contacts = [[NSUserDefaults standardUserDefaults] objectForKey:@"Local Contacts"];
@@ -135,15 +178,30 @@
     NSMutableArray *searchResults = [NSMutableArray arrayWithArray:[contacts filteredArrayUsingPredicate:pred]];
     _allResults = searchResults;
     
-    /*
-    NSSet *intermediate = [NSSet setWithArray:searchResults];
-    [intermediate addObjectsFromArray:_serverSearchResults];
-    _allResults = [intermediate allObjects];
-     */
-    
     NSSortDescriptor *server = [[NSSortDescriptor alloc] initWithKey:@"isFromServer" ascending:YES];
     NSSortDescriptor *fullName = [[NSSortDescriptor alloc] initWithKey:@"FullName" ascending:YES];
     _allResults = [[_allResults sortedArrayUsingDescriptors:[NSArray arrayWithObjects:server, fullName, nil]] mutableCopy];
+}
+
+#pragma mark - AlertView delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        NSLog(@"Send Twilio text");
+        //send twilio request
+    }
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSIndexPath *index=[self.tableView indexPathForCell:sender];
+    if([segue.identifier isEqualToString:@"toCard"]){
+        NSDictionary *currentInfo=[_allResults objectAtIndex:index.row];
+        
+        SWCardViewController* destination=(SWCardViewController*)[segue destinationViewController];
+        [destination setCardData:currentInfo];
+    }
 }
 
 /*

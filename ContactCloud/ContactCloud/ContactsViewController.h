@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface ContactsViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
+@interface ContactsViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate, UIAlertViewDelegate>
 
 @end
