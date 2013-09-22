@@ -1,4 +1,1 @@
-contactCloud
-============
-
-contacts in the cloud
+cloud contacts
