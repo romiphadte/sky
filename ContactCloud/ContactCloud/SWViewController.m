@@ -11,12 +11,17 @@
 #import "VBAddressBookGrabber.h"
 
 #import "SWDataUploader.h"
+#import "SWTwilio.h"
 
 @interface SWViewController ()
 
 @end
 
 @implementation SWViewController
+- (IBAction)callTwilioCode:(id)sender {
+    SWTwilio *myTWilio=[[SWTwilio alloc]init];
+    [myTWilio sendTextToNumber:[[NSNumber alloc] initWithInt:4086428972]];
+}
 
 - (void)viewDidLoad
 {
